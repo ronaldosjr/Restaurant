@@ -69,9 +69,9 @@ namespace Restaurants.Application.Test.Services
         {
             var dishList = new List<RestaurantDto>
             {
-                CreateValidRestaurant("pratolist 1"),
-                CreateValidRestaurant("pratolist 2"),
-                CreateValidRestaurant("pratolist 3"),
+                CreateValidRestaurant("restaurant 1"),
+                CreateValidRestaurant("restaurant 2"),
+                CreateValidRestaurant("restaurant 3"),
             };
 
             foreach (var item in dishList)
