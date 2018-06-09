@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
-using Restaurants.WebApi.Helpers;
 using Restaurants.Application.Dtos.Common;
 using Restaurants.Application.Services.Common;
 using Restaurants.Domain.Entities.Common;
-using Restaurants.Api.Helpers;
 
-namespace Restaurants.WebApi.Controllers.Common
+namespace Restaurants.Api.Controllers.Common
 {
 
     public abstract class BaseCrudController<TDto,TEntity> : ControllerBase
@@ -16,7 +14,7 @@ namespace Restaurants.WebApi.Controllers.Common
     {
         protected readonly ICrudApplication<TDto, TEntity> Application;
 
-        public BaseCrudController(ICrudApplication<TDto, TEntity> application)
+        protected BaseCrudController(ICrudApplication<TDto, TEntity> application)
         {
             Application = application;
         }

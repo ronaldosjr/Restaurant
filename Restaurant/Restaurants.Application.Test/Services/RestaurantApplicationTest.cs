@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Restaurants.Application.Dtos;
-using Restaurants.Application.Dtos.Mappers;
-using Restaurants.Application.Services;
 using Restaurants.Application.Services.Interfaces;
-using Restaurants.Domain.Services.ValidationServices;
-using Restaurants.Infra.Context;
-using Restaurants.Infra.Repositories;
+using Restaurants.Application.Test.Helpers;
 
 namespace Restaurants.Application.Test.Services
 {
@@ -19,24 +11,7 @@ namespace Restaurants.Application.Test.Services
     {
         private readonly IRestaurantApplication _application;
 
-        public RestaurantApplicationTest() => _application = Configuration();
-
-        private IRestaurantApplication Configuration()
-        {
-            var builder =
-                new DbContextOptionsBuilder<RestaurantContext>()
-                    .UseInMemoryDatabase("restaurant")
-                    .Options;
-            var context = new RestaurantContext(builder);
-            var connection = new Connection(context);
-
-            var mapperConfig = new MapperConfiguration(map => { map.AddProfile<DtoMapper>(); });
-            var mapper = mapperConfig.CreateMapper();
-            var repository = new RestaurantRepository(connection);
-            var validation = new RestaurantValidationBeforePersist(repository);
-
-            return new RestaurantApplication(connection, mapper, repository, validation);
-        }
+        public RestaurantApplicationTest() => _application = ObjectInitiliazer.CreateRestaurantApplication();
 
         private RestaurantDto CreateValidRestaurant(string name) => new RestaurantDto { Name = name };
 

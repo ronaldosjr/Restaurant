@@ -1,15 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AutoMapper;
-using Microsoft.EntityFrameworkCore;
 using NUnit.Framework;
 using Restaurants.Application.Dtos;
-using Restaurants.Application.Dtos.Mappers;
-using Restaurants.Application.Services;
 using Restaurants.Application.Services.Interfaces;
-using Restaurants.Domain.Services.ValidationServices;
-using Restaurants.Infra.Context;
-using Restaurants.Infra.Repositories;
+using Restaurants.Application.Test.Helpers;
 
 namespace Restaurants.Application.Test.Services
 {
@@ -18,24 +12,7 @@ namespace Restaurants.Application.Test.Services
     {
         private readonly IDishApplication _application;
 
-        public DishApplicationTest() => _application = Configuration();
-
-        private IDishApplication Configuration()
-        {
-            var builder =
-                new DbContextOptionsBuilder<RestaurantContext>()
-                    .UseInMemoryDatabase("restaurant")
-                    .Options;
-            var context = new RestaurantContext(builder);
-            var connection = new Connection(context);
-
-            var mapperConfig = new MapperConfiguration(map => { map.AddProfile<DtoMapper>(); });
-            var mapper = mapperConfig.CreateMapper();
-            var repository = new DishRepository(connection);
-            var validation = new DishValidationBeforePersist(repository);
-
-            return new DishApplication(connection, mapper, repository, validation);
-        }
+        public DishApplicationTest() => _application = ObjectInitiliazer.CreateDishApplication();
 
         private DishDto CreateValidDish(string name) => new DishDto { Name = name, Price = 20, Restaurant = new RestaurantDto { Name = "Restaurant" } };
 

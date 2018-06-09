@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Restaurants.WebApi.Controllers
+namespace Restaurants.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

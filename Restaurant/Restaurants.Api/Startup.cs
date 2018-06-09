@@ -11,7 +11,7 @@ using Restaurants.Infra.Context;
 using Restaurants.IoC;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace Restaurants.WebApi
+namespace Restaurants.Api
 {
     public class Startup
     {
@@ -47,7 +47,7 @@ namespace Restaurants.WebApi
                         Contact = new Contact
                         {
                             Name = "Ronaldo  Ribeiro",
-                            Url = "https://github.com/ronaldosjr"
+                            Url = "https://github.com/ronaldosjr/Restaurant"
                         }
                     }));
         }

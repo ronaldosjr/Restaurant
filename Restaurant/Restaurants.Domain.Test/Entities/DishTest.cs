@@ -18,7 +18,7 @@ namespace Restaurants.Domain.Test.Entities
         private static Dish CreateValidDish() => new Dish(_validName, _validPrice, ValidRestaurant);
 
         [Test]
-        public void Should_Create_Dish(Dish dish)
+        public void Should_Create_Dish()
         {
             Assert.IsInstanceOf<Dish>(CreateValidDish());
         }

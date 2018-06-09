@@ -1,19 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Restaurants.WebApi.Controllers.Common;
+using Restaurants.Api.Controllers.Common;
 using Restaurants.Application.Dtos;
-using Restaurants.Application.Services.Common;
 using Restaurants.Application.Services.Interfaces;
 using Restaurants.Domain.Entities;
 
-namespace Restaurants.WebApi.Controllers
+namespace Restaurants.Api.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
     public class RestaurantController : BaseCrudController<RestaurantDto, Restaurant>
     {
         private readonly IRestaurantApplication _restaurantApplication;
@@ -37,12 +31,12 @@ namespace Restaurants.WebApi.Controllers
             }
         }
 
-        [HttpGet("nameTaken/{name}")]
-        public ActionResult<bool> GetById([FromRoute] string name)
+        [HttpGet("nameTaken/{name}/{id}")]
+        public ActionResult<bool> IsNameTaken([FromRoute] string name, [FromRoute] int id)
         {
             try
             {
-                return _restaurantApplication.IsNameTaken(name);
+                return _restaurantApplication.IsNameTaken(new RestaurantDto{Name =  name, Id = id});
             }
             catch (Exception e)
             {

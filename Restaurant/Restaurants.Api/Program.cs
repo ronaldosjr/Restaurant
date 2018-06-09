@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Restaurants.WebApi
+namespace Restaurants.Api
 {
     public class Program
     {
