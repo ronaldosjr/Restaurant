@@ -11,10 +11,17 @@ namespace Restaurants.Application.Test.Services
     public class DishApplicationTest
     {
         private readonly IDishApplication _application;
+        private readonly IRestaurantApplication _restaurantApplication;
+        private readonly RestaurantDto _restaurantDto;
 
-        public DishApplicationTest() => _application = ObjectInitiliazer.CreateDishApplication();
+        public DishApplicationTest()
+        {
+            (_application, _restaurantApplication) = ObjectInitiliazer.CreateDishApplication();
+           
+            _restaurantDto = _restaurantApplication.Add(new RestaurantDto { Name = "Restaurant"});
+        }
 
-        private DishDto CreateValidDish(string name) => new DishDto { Name = name, Price = 20, Restaurant = new RestaurantDto { Name = "Restaurant" } };
+        private DishDto CreateValidDish(string name) => new DishDto { Name = name, Price = 20, RestaurantId = _restaurantDto.Id, Restaurant = _restaurantDto };
 
         [Test]
         public void Should_Add_Dish()

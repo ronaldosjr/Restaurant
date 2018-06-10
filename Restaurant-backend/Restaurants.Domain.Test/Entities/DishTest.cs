@@ -13,7 +13,7 @@ namespace Restaurants.Domain.Test.Entities
         private static readonly string _avaibleName = "Avaible";
         private static readonly decimal _validPrice = 1;
         private static readonly decimal _invalidPrice = 0;
-        private static readonly Restaurant ValidRestaurant = new Restaurant(_validName);
+        private static readonly Restaurant ValidRestaurant = new Restaurant(_validName){Id = 1};
 
         private static Dish CreateValidDish() => new Dish(_validName, _validPrice, ValidRestaurant);
 

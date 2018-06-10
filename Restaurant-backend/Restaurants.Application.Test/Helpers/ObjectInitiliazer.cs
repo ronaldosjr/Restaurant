@@ -11,13 +11,17 @@ namespace Restaurants.Application.Test.Helpers
 {
     public static class ObjectInitiliazer
     {
-
-        public static IDishApplication CreateDishApplication()
+      
+        public static (IDishApplication, IRestaurantApplication) CreateDishApplication()
         {
             var (connection, mapper) = LoadDependencies();
             var repository = new DishRepository(connection);
+            var repositoryRestaurant = new RestaurantRepository(connection);
 
-            return new DishApplication(connection,mapper, repository, new DishValidationBeforePersist(repository));
+            return
+                (new DishApplication(connection, mapper, repository, new DishValidationBeforePersist(repository)),
+                    new RestaurantApplication(connection, mapper, repositoryRestaurant,
+                        new RestaurantValidationBeforePersist(repositoryRestaurant)));
         }
 
 

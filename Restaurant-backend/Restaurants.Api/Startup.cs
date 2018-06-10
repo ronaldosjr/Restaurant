@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 using Restaurants.Api.Helpers;
 using Restaurants.Application.Dtos.Mappers;
 using Restaurants.Infra.Context;
@@ -71,5 +72,7 @@ namespace Restaurants.Api
             app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v1/swagger.json", "Gerenciador de Restaurante"); });
            
         }
+
+        
     }
 }

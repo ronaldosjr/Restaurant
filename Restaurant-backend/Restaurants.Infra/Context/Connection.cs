@@ -28,8 +28,7 @@ namespace Restaurants.Infra.Context
                     return;
                 }
             }
-
-            if (_context.Database.GetPendingMigrations().Any())
+           if (_context.Database.GetPendingMigrations().Any())
                 _context.Database.Migrate();
         }
 

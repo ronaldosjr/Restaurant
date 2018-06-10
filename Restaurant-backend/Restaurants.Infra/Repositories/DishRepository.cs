@@ -15,7 +15,7 @@ namespace Restaurants.Infra.Repositories
         {
         }
 
-        public new IReadOnlyList<Dish> GetAll() => Query().Include(d => d.Restaurant).ToList();
+        public new IReadOnlyList<Dish> GetAll() => Query().Include(i => i.Restaurant).ToList();
 
         public new void Add(Dish entity)
         {

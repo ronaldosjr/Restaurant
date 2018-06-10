@@ -19,6 +19,9 @@ namespace Restaurants.Domain.Entities
             Name = name;
             Price = price;
 
+            if (restaurant != null)
+                RestaurantId = Restaurant.Id;
+
             IsValid();
         }
 
@@ -29,7 +32,7 @@ namespace Restaurants.Domain.Entities
 
         public sealed override bool IsValid()
         {
-            if (Restaurant == null)
+            if (RestaurantId ==0)
                 throw new Exception(DomainValidationMessages.RestaurantNotInformed);
 
             if (string.IsNullOrWhiteSpace(Name))

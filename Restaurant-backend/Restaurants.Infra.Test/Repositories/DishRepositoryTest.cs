@@ -78,16 +78,16 @@ namespace Restaurants.Infra.Test.Repositories
 
         private Dish CreateFakeDish()
         {
-            return new Dish("dish", 10, new Restaurants.Domain.Entities.Restaurant("restaurant"));
+            return new Dish("dish", 10, new Restaurants.Domain.Entities.Restaurant("restaurant") { Id = 1 });
         }
 
         private IEnumerable<Dish> FakeDish()
         {
             return new List<Dish>
             {
-                new Dish("Fake 1", 11, new Restaurants.Domain.Entities.Restaurant("Fake")){Id = 1},
-                new Dish("Fake 2", 12, new Restaurants.Domain.Entities.Restaurant("Fake")){Id = 2},
-                new Dish("Fake 3", 13, new Restaurants.Domain.Entities.Restaurant("Fake")){Id = 3},
+                new Dish("Fake 1", 11, new Restaurant("Fake"){Id = 1}){Id = 1},
+                new Dish("Fake 2", 12, new Restaurant("Fake"){Id = 1}){Id = 2},
+                new Dish("Fake 3", 13, new Restaurant("Fake"){Id = 1}){Id = 3},
             };
         }
     }
