@@ -1,0 +1,15 @@
+@import '../../../../../assets/styles/mixings';
+@import '../../../../../assets/styles/variables';
+
+.title-center{
+  @include title-centered
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: $side-bar-width;
+  box-shadow: $side-bar-box-shadow;
+}

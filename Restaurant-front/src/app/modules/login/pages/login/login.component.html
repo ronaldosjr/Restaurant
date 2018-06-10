@@ -1,0 +1,48 @@
+<div class="login-wrapper">
+  <mat-card class="login-card">
+
+    <mat-card-title>
+      <i class="material-icons">fastfood</i> Acesso
+    </mat-card-title>
+
+
+    <mat-card-content>
+      <mat-form-field >
+        <input
+          matInput
+          placeholder="Usuário"
+          [(ngModel)]="login"
+          required
+          #loginField="ngModel">
+        <mat-error *ngIf="loginField.invalid">Login deve ser informado</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          matInput
+          type="password"
+          placeholder="Senha"
+          [(ngModel)]="password"
+          required
+          (keyup.enter)="loginClicked()"
+          #passwordField="ngModel">
+        <mat-error *ngIf="passwordField.invalid">Senha deve ser informada</mat-error>
+      </mat-form-field>
+
+      <mat-card-actions style="float:right; padding-right:10px;">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="loginClicked()"
+          [disabled]="passwordField.invalid || loginField.invalid"
+          >Login</button>
+        <!--<mat-progress-spinner diameter="20" mode="indeterminate"></mat-progress-spinner>-->
+      </mat-card-actions>
+
+
+    </mat-card-content>
+  </mat-card>
+</div>
+
+
+

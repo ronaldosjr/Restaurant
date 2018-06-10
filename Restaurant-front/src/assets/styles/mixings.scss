@@ -1,0 +1,11 @@
+@mixin fully-centered{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+@mixin title-centered {
+  flex: 1 1 auto;
+  text-align: center;
+}

@@ -1,0 +1,42 @@
+<div class="list-crud">
+  <mat-card>
+    <mat-card-title>Cadastro de pratos</mat-card-title>
+    <mat-card-content>
+      <form #f="ngForm" (ngSubmit)="formSubmited()">
+
+        <mat-form-field >
+          <input
+            matInput
+            name="restaurante"
+            maxlength="255"
+            placeholder="Resturante"
+            [(ngModel)]="entity.name"
+            required
+            #restauranteName="ngModel">
+          <mat-error *ngIf="restauranteName.invalid">Nome deve ser informado</mat-error>
+        </mat-form-field>
+
+      </form>
+    </mat-card-content>
+    <mat-card-actions style="float:right; padding-right:10px;">
+      <button
+        mat-button
+        color="primary"
+        (click)="backToList()"
+      >Cancelar</button>
+      <button
+        mat-raised-button
+        (click)="formSubmited()"
+        color="primary"
+        [disabled]="restauranteName.invalid"
+      ><i class="material-icons">
+        save
+      </i>
+        Gravar</button>
+    </mat-card-actions>
+    <br>
+    <br>
+  </mat-card>
+
+
+</div>

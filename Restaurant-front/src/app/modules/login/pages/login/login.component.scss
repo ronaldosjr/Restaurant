@@ -1,0 +1,16 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/mixings";
+
+.login-wrapper{
+  height: 100%;
+  background : $background-older !important;
+  background : $background-older-chrome !important;
+  background : $background-newer-browser !important;
+  @include fully-centered;
+}
+
+.login-card{
+  width: $login-width;
+
+}
+

@@ -1,0 +1,13 @@
+@import "../../../../../assets/styles/variables";
+@import "../../../../../assets/styles/mixings";
+
+.centered{
+  height: -webkit-calc(100% - 64px);
+  height:    -moz-calc(100% - 64px);
+  height:         calc(100% - 64px);
+  overflow: hidden;
+  background : $background-older !important;
+  background : $background-older-chrome !important;
+  background : $background-newer-browser !important;
+  @include fully-centered;
+}

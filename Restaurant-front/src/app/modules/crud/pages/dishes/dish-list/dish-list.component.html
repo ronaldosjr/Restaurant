@@ -1,0 +1,64 @@
+<div class="list-crud">
+  <mat-card>
+    <mat-card-title>
+      Cadastro de Pratos
+    </mat-card-title>
+    <mat-card-content>
+      <mat-form-field>
+        <input matInput (change)="setFilter($event.target.value)" (keyup)="setFilter($event.target.value)" placeholder="Pesquisa">
+      </mat-form-field>
+
+      <div class="padding-bottom">
+        <button
+        mat-raised-button
+        (click)="newRecord()"
+        color="primary">
+        Novo Prato</button>
+      </div>
+      <table mat-table [dataSource]="dataSource"  matSort class="mat-elevation-z8" style="width: 100%">
+        <ng-container matColumnDef="restaurant">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Restaurante </th>
+          <td mat-cell *matCellDef="let element"> {{element.restaurant}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="dish">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Prato </th>
+          <td mat-cell *matCellDef="let element"> {{element.dish}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="price">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> Preço </th>
+          <td mat-cell *matCellDef="let element"> {{element.price}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="id">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>  </th>
+          <td mat-cell *matCellDef="let element">
+            <button mat-button (click)="editRecord(element.id)">
+              <i class="material-icons">
+              edit
+              </i>
+            </button>
+            <button mat-button (click)="deleteRecord(element.id)">
+              <i class="material-icons">
+              delete_forever
+              </i>
+            </button>
+          </td>
+        </ng-container>
+
+        <!--<ng-container cdkColumnDef="actions">-->
+          <!--<th md-header-cell > Ações </th>-->
+          <!--<td md-cell *cdkCellDef="let element" >-->
+            <!--<button md-raised-button (click)="editedRow(element.id)">Edit</button>-->
+          <!--</td>-->
+        <!--</ng-container>-->
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </mat-card-content>
+  </mat-card>
+</div>
+
+

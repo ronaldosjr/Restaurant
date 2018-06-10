@@ -1,0 +1,49 @@
+<mat-sidenav-container fullscreen class="sidenav-container" >
+  <mat-sidenav
+    #drawer
+    class="sidenav"
+    fixedInViewport="true"
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'"
+    [opened]="!(isHandset$ | async)"
+    >
+    <mat-toolbar color="primary">Ações</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="">Início</a>
+      <a mat-list-item routerLink="crud/dishes">Cadastro de Pratos</a>
+      <a mat-list-item routerLink="crud/restaurants">Cadastro de Restaurantes</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content >
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span class="title-center">Gerenciamento de Restaurante</span>
+      <div style="display: flex; float: right">
+        <button mat-button [matMenuTriggerFor]="appMenu" >
+          <i class="material-icons">
+            account_circle
+          </i>
+        </button>
+        <mat-menu #appMenu="matMenu">
+          <button mat-menu-item (click)="exitButtonClicked()">
+            <i class="material-icons">exit_to_app</i> Sair
+          </button>
+        </mat-menu>
+
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+    <!--<img src="/assets/images/restaurant.jpg">-->
+    <!--Seja bem-vindo {{userName}}-->
+
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
