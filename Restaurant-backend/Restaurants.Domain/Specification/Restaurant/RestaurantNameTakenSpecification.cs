@@ -20,7 +20,7 @@ namespace Restaurants.Domain.Specification.Restaurant
             return restaurant =>
                 restaurant.Name.ToLower(CultureInfo.InvariantCulture)
                     .Equals(_right.Name.ToLower(CultureInfo.InvariantCulture))
-                && ((restaurant.Id ==_right.Id) || (_right.Id == 0));
+                && ((restaurant.Id !=_right.Id) || (_right.Id == 0));
         }
     }
 }

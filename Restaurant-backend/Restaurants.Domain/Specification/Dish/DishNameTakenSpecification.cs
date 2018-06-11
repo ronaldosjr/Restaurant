@@ -20,7 +20,7 @@ namespace Restaurants.Domain.Specification.Dish
             return dish => dish.Name.ToLower(CultureInfo.InvariantCulture).Equals(
                 _right.Name.ToLower(CultureInfo.InvariantCulture)) 
                            && (dish.Id.Equals(_right.Id) || (_right.Id == 0))
-                           && (dish.Restaurant.Id == _right.Restaurant.Id);
+                           && (dish.Restaurant.Id != _right.Restaurant.Id);
         }
     }
 }
