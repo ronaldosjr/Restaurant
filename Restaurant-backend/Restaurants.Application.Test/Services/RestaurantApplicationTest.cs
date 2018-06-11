@@ -63,7 +63,9 @@ namespace Restaurants.Application.Test.Services
         public bool Should_Name_Taken()
         {
             var added = _application.Add(CreateValidRestaurant("restaurant taken"));
-            return _application.IsNameTaken(added);
+            var newer = CreateValidRestaurant("restaurant taken");
+            newer.Id = 9999;
+            return _application.IsNameTaken(newer);
         }
 
         [Test]

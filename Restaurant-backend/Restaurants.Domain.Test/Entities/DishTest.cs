@@ -57,7 +57,9 @@ namespace Restaurants.Domain.Test.Entities
         public void Should_Validate_Dish_With_Taken_Name()
         {
             var spec = new DishNameTakenSpecification(CreateValidDish());
-            Assert.AreEqual(spec.IsSatisfiedBy(CreateValidDish()), true);
+            var validDish = CreateValidDish();
+           
+            Assert.AreEqual(spec.IsSatisfiedBy(validDish), true);
         }
 
         [Test]

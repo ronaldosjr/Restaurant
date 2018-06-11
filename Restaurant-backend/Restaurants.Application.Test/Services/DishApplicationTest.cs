@@ -71,7 +71,9 @@ namespace Restaurants.Application.Test.Services
         public bool Should_Name_Taken()
         {
             var added = _application.Add(CreateValidDish("prato taken"));
-            return _application.IsNameTaken(added);
+            var newDish = CreateValidDish("prato taken");
+            newDish.Id = 0;
+            return _application.IsNameTaken(newDish);
         }
         
         [Test]
